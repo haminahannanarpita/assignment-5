@@ -1,45 +1,121 @@
-console.log('add file')
 
-const hearts = document.getElementsByClassName('fa-heart')
+
+const titles = document.getElementsByClassName('title');
+const numbers = document.getElementsByClassName('number');
+
+const hearts = document.getElementsByClassName('fa-heart');
 
 for(const heart of hearts){
+      
+      
     heart.addEventListener('click',function(){
-        
+       
         let redHeart = Number(document.getElementById('red-heart').innerText)
-        // console.log(redHeart)
+        
 
         document.getElementById('red-heart').innerText = redHeart + 1;
+        
     })
+    
 }
-// function for gold coin
-// function getGoldCoin(id){
-//     const goldCoin = 100;
-//     if(goldCoin>0){
-//        const finalGoldCoin = goldCoin - 20;
-//        return(finalGoldCoin)
-//     }
-//     else{
-//         alert('not available coin')
-//     }
-// }
 
-// coin section
 
-let coins = document.getElementsByClassName('call-btn')
+let coinValue = Number(document.getElementById('coin').innerText);
+    
 
-for(const coin of coins){
-    coin.addEventListener('click',function(){
-        console.log('haluu')
+const btn = document.getElementsByClassName('call');
 
-        let goldCoin = Number(document.getElementById('gold-coin').innerText)
-        console.log(goldCoin)
+for (let i=0; i<btn.length ; i++) {
+  
+  btn[i].addEventListener('click', function() {
 
+    
+    
+    
+ 
+    
+    const title = titles[i].innerText;
+    
+    const number = numbers[i].innerText;
+    
+    
+
+    if(coinValue < 20 ){
+            
+            alert("❌ আপনার পর্যাপ্ত Coin নেই । কল করতে কমপক্ষে ২০টি Coin লাগবে !!!!");
+            return;
+            
+    
+    }
+    else{
+      coinValue -= 20;
+      
+      alert("📞 Calling " + title +" "+ number +"...");
+    
+    }
+
+
+    const time = new Date().toLocaleTimeString()
+
+     
+   
+    const history = document.getElementById('history')
+    
+
+      
+      const div = document.createElement("div")
+     
+      div.innerHTML = `
+
+                <div class="history flex items-center justify-between bg-[#fafafa] p-4 mt-4">
+                    <div class="left ">
+                         <h1 id="d-title"  class="text-lg ">${title}</h1>
+                         <p id="d-number" class="text-lg text-[#5c5c5c]">${number}</p>
+                    </div>
+                  
+                         <h1 id="time">${time}</h1>
+                    
+                 </div>
+      `;
+      history.appendChild(div);
+
+    document.getElementById('coin').innerText = coinValue ;
+
+    
+  });
+}
+
+     document.getElementById('clear').addEventListener('click',function(){
+      document.getElementById('history').innerText = "";
+      
+     })
+
+    //               // Copy number
+
+
+
+    const copyBtns = document.getElementsByClassName('copyBtn');
+
+for(let i=0; i<copyBtns.length; i++){
+      
+      
+    copyBtns[i].addEventListener('click', function(){
        
-        if(goldCoin > 0){
-             document.getElementById('gold-coin').innerText = goldCoin - 20 ;
-        }
-        else{
-            alert('invalid')
-        }
+        let copyNumbers = Number(document.getElementById('copy-numbers').innerText)
+        
+
+        document.getElementById('copy-numbers').innerText = copyNumbers + 1;
+
+
+            
+           const textToCopy = numbers[i].innerText;
+           console.log(textToCopy)
+
+   
+          navigator.clipboard.writeText(textToCopy); 
+            alert("Text copied: " + textToCopy);       
+    
+        
     })
+    
 }
