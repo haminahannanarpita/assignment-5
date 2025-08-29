@@ -20,10 +20,10 @@ for(const heart of hearts){
 }
 
 
-let coinValue = Number(document.getElementById('coin').innerText);
+let coinValue = Number(document.getElementById('coins').innerText);
     
 
-const btn = document.getElementsByClassName('call');
+const btn = document.getElementsByClassName('calls');
 
 for (let i=0; i<btn.length ; i++) {
   
@@ -79,7 +79,7 @@ for (let i=0; i<btn.length ; i++) {
       `;
       history.appendChild(div);
 
-    document.getElementById('coin').innerText = coinValue ;
+    document.getElementById('coins').innerText = coinValue ;
 
     
   });
@@ -90,7 +90,7 @@ for (let i=0; i<btn.length ; i++) {
       
      })
 
-    //               // Copy number
+  // Copy number
 
 
 
